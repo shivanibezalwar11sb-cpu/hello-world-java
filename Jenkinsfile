@@ -8,24 +8,24 @@ pipeline {
             }
         }
         
-        stage('Build') {
+       stage('Compile') {
             steps {
-                sh 'mvn clean compile'
+                sh 'javac HelloWorld.java'
             }
         }
-        stage('Test') {
+        stage('Run') {
             steps {
-                sh 'mvn test'
+                sh 'java HelloWorld'
             }
         }
         stage('Package') {
             steps {
-                sh 'mvn package'
+                sh 'jar cfe HelloWorld.jar HelloWorld HelloWorld.class'
             }
         }
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: 'target/*.jar'
+                archiveArtifacts artifacts: 'HelloWorld.jar'
             }
         }
     }
