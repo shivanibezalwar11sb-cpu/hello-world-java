@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven3'
+        jdk 'JDK17'
+    }
+    stages {
+        stage('Checkout SCM') {
+            steps {
+                git 'https://github.com/shivanibezalwar11sb-cpu/hello-world-java'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar'
+            }
+        }
+    }
+}
