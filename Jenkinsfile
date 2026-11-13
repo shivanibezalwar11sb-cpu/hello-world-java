@@ -2,11 +2,6 @@ pipeline {
     agent any
    
     stages {
-        stage('Checkout SCM') {
-            steps {
-                git 'https://github.com/shivanibezalwar11sb-cpu/hello-world-java'
-            }
-        }
         
        stage('Compile') {
             steps {
