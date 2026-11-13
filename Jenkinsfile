@@ -7,11 +7,6 @@ pipeline {
                 git 'https://github.com/shivanibezalwar11sb-cpu/hello-world-java'
             }
         }
-        stage('Install') {
-            steps {
-                sh 'sudo apt install maven'
-            }
-        }
         
         stage('Build') {
             steps {
